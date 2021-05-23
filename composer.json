@@ -1,0 +1,16 @@
+{
+    "name": "composera/mini-simple-router",
+    "description": "Simple Routing Component",
+    "authors": [
+        {
+            "name": "Asad Shamsuddinkhojaev",
+            "email": "asadxoja5651@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Router\\": "src/"
+        }
+    }
+}

@@ -1,5 +1,6 @@
 <?php
 
+namespace Router;
 
 class Router
 {
@@ -62,22 +63,19 @@ class Router
     {
         foreach (self::getInstance()->routes as $route) {
             if (self::getInstance()->matches($route['path'])) {
+                $data = self::getInstance()->parseVariables();
                 if ($route['is_callable']) {
-                    $data = self::getInstance()->parseVariables();
-                    return call_user_func_array($route['handler'], $data);
+                    return [
+                        $route['handler'],
+                        $data
+                    ];
                 } else {
-                    $data = explode('@', $route['handler']);
-                    $class = $data[0];
-                    $exploded_class = explode('/', $class);
-                    $class_name = end($exploded_class);
-                    $method = $data[1];
+                    $handler_data = explode('@', $route['handler']);
 
-                    require $class . '.php';
-
-                    $controller = new $class_name();
-
-                    $data = self::getInstance()->parseVariables();
-                    return call_user_func_array([$controller, $method], $data);
+                    return [
+                        $handler_data,
+                        $data
+                    ];
                 }
             }
         }
