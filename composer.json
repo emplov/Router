@@ -7,7 +7,9 @@
             "email": "asadxoja5651@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "symfony/var-dumper": "^5.2"
+    },
     "autoload": {
         "psr-4": {
             "Router\\": "src/"
