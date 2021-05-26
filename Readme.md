@@ -10,8 +10,10 @@ $router = Router::getInstance();
 Then choose method to set routes
 ```php
 $router->get('/', 'app/Controllers/PageController@index');
+$router->get('/users/{id}', 'app/Controllers/PageController@index');
 or
 $router->post('/', 'app/Controllers/PageController@index');
+$router->post('/users/{id}', 'app/Controllers/PageController@index')->where('id', '[0-9]+');
 or
 $router->add('GET', '/', 'app/Controller/PageController@index');
 ```
