@@ -40,8 +40,8 @@ use Router\Router;
 
 $router = Router::getInstance();
 
-$router->get('/{id}/{name}/{asad}', 'App/Controllers/PageController@index')->where('id', '[0-9]+');
-$router->get('/users/{id}/test/{name}', 'App/Controllers/PageController@index');
+$router->add('GET','/{id}/{name}/{asad}', 'App/Controllers/PageController@index')->where('id', '[0-9]+');
+//$router->get('/users/{id}/test/{name}', 'App/Controllers/PageController@index');
 
 //dd($router);
 

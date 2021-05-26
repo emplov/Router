@@ -3,6 +3,8 @@
 ## Usage
 Get instance of the router
 ```php
+use Router\Router;
+
 $router = Router::getInstance();
 ```
 Then choose method to set routes
@@ -21,15 +23,27 @@ $router->get('/about', function () {
 ```
 In the end just dispatch the route
 ```php
-$router->dispatch();
+$res = $router->dispatch();
+
+switch ($res['status']) {
+    case Router::ROUTE_NOT_FOUND:
+        echo "Route not found;";
+        break;
+    case Router::METHOD_NOT_ALLOWED:
+        echo "Method not allowed";
+        break;
+    case Router::SUCCESS:
+        dd($res);
+        break;
 ```
 
 ---
 #TODO
 
-* Make possible to get route parameters like: 
+* Make possible to get route parameters like:  (Done)
 ```php
-$router->get('/users/\d+', function ($id) {
+$router->get('/users/{id}', function ($id) {
     echo $id;
-});
+})->where('id', '[0-9]+');
 ```
+* Привести в порядок код
