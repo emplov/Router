@@ -39,13 +39,3 @@ switch ($res['status']) {
         break;
 ```
 
----
-#TODO
-
-* Make possible to get route parameters like:  (Done)
-```php
-$router->get('/users/{id}', function ($id) {
-    echo $id;
-})->where('id', '[0-9]+');
-```
-* Привести в порядок код
